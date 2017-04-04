@@ -13,27 +13,30 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p class="circle center-block" id="red">red</p>
+      <a class="circle center-block" id="red"></a>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p class="circle" id="purple">
-        purple
-      </p>
-      <p class="circle" id="green">
-        green
-      </p>
+      <h1 class="info">Nice work</h1>
+      <a class="circle" id="purple"></a>
+      <a class="circle" id="green"></a>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p class="circle" id="blue">
-        blue
-    </div>
+      <a class="circle" id="blue"></a></div>
   </div>
-
 </div>
+
+<audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autostart="false" ></audio>
+<a onclick="PlaySound()"> Play</a>
+<script>
+function PlaySound() {
+      var sound = document.getElementById("audio");
+      sound.play()
+  }
+</script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>

@@ -26,6 +26,17 @@ body {
 	display: inline-block;
 }
 
+.circle:active {
+	opacity: 0.7;
+}
+
+.info {
+	display: inline-block;
+	position: absolute;
+	margin-left: 17rem;
+	margin-top: -5rem;
+}
+
 #red {
 	background: red;
 }
