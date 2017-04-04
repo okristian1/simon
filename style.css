@@ -35,6 +35,7 @@ body {
 	position: absolute;
 	margin-left: 17rem;
 	margin-top: -5rem;
+	z-index: -1;
 }
 
 #red {

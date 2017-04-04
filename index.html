@@ -13,31 +13,33 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a class="circle center-block" id="red"></a>
+      <a class="circle center-block" id="red">
+        <audio id="redAudio" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" autostart="false" ></audio>
+      </a>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <h1 class="info">Nice work</h1>
-      <a class="circle" id="purple"></a>
-      <a class="circle" id="green"></a>
+      <a class="circle" id="yellow">
+        <audio id="yellowAudio" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" autostart="false" ></audio>
+      </a>
+      <a class="circle" id="green">
+        <audio id="greenAudio" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" autostart="false" ></audio>
+      </a>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <a class="circle" id="blue"></a></div>
+      <a class="circle" id="blue">
+        <audio id="blueAudio" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" autostart="false" ></audio>
+      </a>
+    </div>
   </div>
 </div>
 
-<audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autostart="false" ></audio>
-<a onclick="PlaySound()"> Play</a>
-<script>
-function PlaySound() {
-      var sound = document.getElementById("audio");
-      sound.play()
-  }
-</script>
 
+<script src="main.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
