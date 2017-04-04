@@ -10,7 +10,7 @@ body {
 	margin-top: 100px;
 }
 
-.container {
+.container-fluid {
 	height: 100vh;
 }
 
@@ -19,15 +19,14 @@ body {
 }
 
 .circle {
-	height: 18rem;
-	width: 18rem;
+	height: 15rem;
+	width: 15rem;
 	border-radius: 100%;
-	margin-bottom: 150px;
+	margin: 0 100px 50px 100px;
+	display: inline-block;
 }
 
 #red {
-	margin-bottom: 80px;
-	margin-top: 50px;
 	background: red;
 }
 
