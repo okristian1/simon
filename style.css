@@ -7,6 +7,9 @@ html {
 
 body {
   background-color: inherit;
+}
+
+.container {
 	height: 100vh;
 }
 
@@ -15,14 +18,30 @@ body {
 }
 
 .circle {
-	height: 20rem;
-	width: 20rem;
+	height: 18rem;
+	width: 18rem;
 	border-radius: 100%;
-	background: red;
 	margin-bottom: 150px;
 }
 
 #red {
 	margin-bottom: 80px;
 	margin-top: 50px;
+	background: red;
+}
+
+#purple {
+	background: purple;
+}
+
+#green {
+	background: green;
+}
+
+#yellow {
+	background: yellow;
+}
+
+#blue {
+	background: blue;
 }
