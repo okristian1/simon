@@ -14,8 +14,15 @@ body {
 	height: 100vh;
 }
 
+.board {
+	max-width: 710px;
+	min-width: 710px;
+
+}
+
 .info{
-	padding: 100px 0 0 9%;
+	padding-top: 14%;
+	padding-left: 9%;
 }
 
 .circle {
@@ -33,8 +40,8 @@ body {
 .info {
 	display: inline-block;
 	position: absolute;
-	margin-left: 17rem;
 	margin-top: -5rem;
+	margin-left: -15rem;
 	z-index: -1;
 }
 
