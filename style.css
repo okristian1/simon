@@ -39,21 +39,17 @@ body {
 }
 
 #red {
-	background: red;
-}
-
-#purple {
-	background: purple;
+	background: #b70b0b;
 }
 
 #green {
-	background: green;
+	background: #139100;
 }
 
 #yellow {
-	background: yellow;
+	background: #f4dc42;
 }
 
 #blue {
-	background: blue;
+	background: #063d96;
 }
