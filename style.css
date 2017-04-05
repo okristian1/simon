@@ -8,16 +8,13 @@ html {
 body {
   background-color: inherit;
 	margin-top: 100px;
+	margin-left: -10%;
 }
 
-.container-fluid {
-	height: 100vh;
-}
 
 .board {
 	max-width: 710px;
 	min-width: 710px;
-
 }
 
 .info{
@@ -58,6 +55,10 @@ body {
 	margin-top: -5rem;
 	margin-left: -15rem;
 	z-index: -1;
+}
+
+.settings {
+	margin-right: 500px;
 }
 
 #red {

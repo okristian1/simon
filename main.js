@@ -2,10 +2,20 @@ var red = document.getElementById("red");
 var yellow = document.getElementById("yellow");
 var blue = document.getElementById("blue");
 var green = document.getElementById("green");
-
+var circles = document.querySelectorAll('.circle');
 var colors = ['red', 'yellow', 'green', 'blue'];
 
-var sequenceCurrent = ['red', 'red', 'red', 'yellow', 'green', 'blue', 'green', 'blue']; //filled for testing
+var sequenceCurrent = ['red', 'yellow', 'green', 'blue', 'green', 'blue', 'red']; //filled for testing
+
+for (var i = 0; i < sequenceCurrent.length; i++) {
+  circles[i].onclick = function(e) {
+
+  }
+  sequenceCurrent[i]
+}
+
+
+
 
 
 function sequenceAdd() {
@@ -13,7 +23,6 @@ function sequenceAdd() {
   sequenceCurrent.push(color);
 }
 
-console.log(sequenceCurrent);
 
 function sequencePlay() {
   var len = sequenceCurrent.length;
@@ -39,8 +48,6 @@ function blink(color) {
   }, 300);
 }
 
-
-sequencePlay();
 
 red.onclick = function() {
   redAudio.play()
