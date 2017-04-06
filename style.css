@@ -30,6 +30,8 @@ body {
 	display: inline-block;
 	cursor: pointer;
 	box-shadow: 0 9px #999;
+	outline: none;
+	border: 3px solid black;
 }
 
 

@@ -7,16 +7,28 @@ var colors = ['red', 'yellow', 'green', 'blue'];
 
 var sequenceCurrent = ['red', 'yellow', 'green', 'blue', 'green', 'blue', 'red']; //filled for testing
 
-for (var i = 0; i < sequenceCurrent.length; i++) {
-  circles[i].onclick = function(e) {
+//make circle clicked compare to sequence not circle incremented.
 
+window.onload = function() {
+  var j = 0;
+  for (var i = 0; i < circles.length; i++) {
+      circles[i].onclick = function(e) {
+        var circle = this.value;
+        for (var i = 0; i < sequenceCurrent.length; i++) {
+          console.log(circle, sequenceCurrent[j]);
+          if (circle === sequenceCurrent[j]) {
+            console.log("ayyy");
+            j++;
+            break;
+          }
+          else {
+            console.log("boooo");
+             break;
+          }
+        }
+    }
   }
-  sequenceCurrent[i]
 }
-
-
-
-
 
 function sequenceAdd() {
   var color = colors[Math.floor(Math.random()*colors.length)];
