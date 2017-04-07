@@ -17,6 +17,10 @@ body {
 	min-width: 710px;
 }
 
+.no-click {
+	pointer-events: none;
+}
+
 .info{
 	padding-top: 14%;
 	padding-left: 9%;

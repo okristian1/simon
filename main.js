@@ -4,6 +4,7 @@ var blue = document.getElementById("blue");
 var green = document.getElementById("green");
 var circles = document.querySelectorAll('.circle');
 var info = document.querySelector('.info');
+var board = document.querySelector('.board');
 var colors = ['red', 'yellow', 'green', 'blue'];
 
 var sequenceCurrent = ['red', 'green', 'blue', 'yellow']; //filled for testing
@@ -11,7 +12,6 @@ var sequenceCurrent = ['red', 'green', 'blue', 'yellow']; //filled for testing
 //make circle clicked compare to sequence not circle incremented.
 
 window.onload = function() {
-
 function gameLoop() {
   var j = 0;
   for (var i = 0; i < circles.length; i++) {
@@ -21,8 +21,10 @@ function gameLoop() {
           console.log(j, sequenceCurrent.length, circle, sequenceCurrent[j]);
           console.log(sequenceCurrent);
           if (j === sequenceCurrent.length-1) {
+            noClick(j);
             j=0;
             sequenceAdd();
+            sequencePlay();
             console.log(sequenceCurrent);
             break;
           } else if (circle !== sequenceCurrent[j]) {
@@ -38,7 +40,12 @@ function gameLoop() {
     }
   }
 
-sequenceCurrent.length
+function noClick(time) {
+  board.classList.add('no-click');
+  setTimeout(function() {
+    board.classList.remove('no-click');
+  },time*1000);
+}
 
 function sequenceAdd() {
   var color = colors[Math.floor(Math.random()*colors.length)];
@@ -84,6 +91,7 @@ green.onclick = function() {
   greenAudio.play()
   }
 
+sequencePlay();
 gameLoop();
 
 }
