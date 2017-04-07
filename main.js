@@ -7,26 +7,29 @@ var info = document.querySelector('.info');
 var board = document.querySelector('.board');
 var colors = ['red', 'yellow', 'green', 'blue'];
 
-var sequenceCurrent = ['red', 'green', 'blue', 'yellow']; //filled for testing
+var sequenceCurrent = []; //filled for testing
 
 //make circle clicked compare to sequence not circle incremented.
-
 window.onload = function() {
 function gameLoop() {
   var j = 0;
+  info.innerHTML = ' Stage 1';
+  sequenceAdd();
+  sequencePlay();
   for (var i = 0; i < circles.length; i++) {
       circles[i].onclick = function(e) {
         var circle = this.value;
+        colorPlay(circle);
         for (var i = 0; i < sequenceCurrent.length ; i++) {
-          console.log(j, sequenceCurrent.length, circle, sequenceCurrent[j]);
-          console.log(sequenceCurrent);
           if (j === sequenceCurrent.length-1) {
             noClick(j);
             j=0;
+            setTimeout(function() {
             sequenceAdd();
             sequencePlay();
             console.log(sequenceCurrent);
-            break;
+          }, 2000);
+          break;
           } else if (circle !== sequenceCurrent[j]) {
             j=0;
             info.innerHTML = "Try again";
@@ -40,10 +43,13 @@ function gameLoop() {
     }
   }
 
+
 function noClick(time) {
   board.classList.add('no-click');
+  info.innerHTML = 'Good Job <br> Turn ' + (time+2);
   setTimeout(function() {
     board.classList.remove('no-click');
+    info.innerHTML = ' Turn ' + (time+2);
   },time*1000);
 }
 
@@ -77,21 +83,18 @@ function blink(color) {
   }, 300);
 }
 
+function colorPlay(color) {
+  if (color === 'red') {
+    redAudio.play();
+  } else if (color === 'blue') {
+    blueAudio.play();
+  } else if (color === 'green') {
+    greenAudio.play();
+  } else if (color === 'yellow') {
+    yellowAudio.play();
+  }
+}
 
-red.onclick = function() {
-  redAudio.play()
-  }
-yellow.onclick = function() {
-  yellowAudio.play()
-  }
-blue.onclick = function() {
-  blueAudio.play()
-  }
-green.onclick = function() {
-  greenAudio.play()
-  }
 
-sequencePlay();
-gameLoop();
-
+  gameLoop();
 }
