@@ -13,7 +13,7 @@ var sequenceCurrent = []; //filled for testing
 window.onload = function() {
 function gameLoop() {
   var j = 0;
-  info.innerHTML = ' Turn 1';
+  info.innerHTML = 'Get Ready';
   sequenceAdd();
   sequenceAdd();
   sequencePlay();
@@ -52,9 +52,10 @@ function gameLoop() {
 function noClick(time) {
   board.classList.add('no-click');
   info.innerHTML = 'Good Job <br> Turn ' + (time+1);
+  info.classList.add('info-scroll');
   setTimeout(function() {
     board.classList.remove('no-click');
-    info.innerHTML = ' Turn ' + (time+1);
+    info.classList.remove('info-scroll');
   },time*1000);
 }
 
@@ -102,6 +103,7 @@ function colorPlay(color) {
 
 var start = document.querySelector('.btn-start');
   start.onclick = function() {
+    start.classList.add('start-hide');
     info.innerHTML = 'Get Ready';
     setTimeout(function(){
       gameLoop();
