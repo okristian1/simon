@@ -13,7 +13,8 @@ var sequenceCurrent = []; //filled for testing
 window.onload = function() {
 function gameLoop() {
   var j = 0;
-  info.innerHTML = ' Stage 1';
+  info.innerHTML = ' Turn 1';
+  sequenceAdd();
   sequenceAdd();
   sequencePlay();
   for (var i = 0; i < circles.length; i++) {
@@ -21,19 +22,23 @@ function gameLoop() {
         var circle = this.value;
         colorPlay(circle);
         for (var i = 0; i < sequenceCurrent.length ; i++) {
-          if (j === sequenceCurrent.length-1) {
+          if (circle !== sequenceCurrent[j]) {
+            j=0;
+            info.innerHTML = "Try again";
+            setTimeout(function(){
+              sequencePlay();
+              noClick(j);
+            }, 1000);
+            break;
+          } else if (j === sequenceCurrent.length-1) {
             noClick(j);
             j=0;
             setTimeout(function() {
             sequenceAdd();
             sequencePlay();
-            console.log(sequenceCurrent);
+            console.log(sequenceCurrent, j);
           }, 2000);
           break;
-          } else if (circle !== sequenceCurrent[j]) {
-            j=0;
-            info.innerHTML = "Try again";
-            break;
           } else {
             j++;
             break;
@@ -46,10 +51,10 @@ function gameLoop() {
 
 function noClick(time) {
   board.classList.add('no-click');
-  info.innerHTML = 'Good Job <br> Turn ' + (time+2);
+  info.innerHTML = 'Good Job <br> Turn ' + (time+1);
   setTimeout(function() {
     board.classList.remove('no-click');
-    info.innerHTML = ' Turn ' + (time+2);
+    info.innerHTML = ' Turn ' + (time+1);
   },time*1000);
 }
 
@@ -95,6 +100,11 @@ function colorPlay(color) {
   }
 }
 
-
-  gameLoop();
+var start = document.querySelector('.btn-start');
+  start.onclick = function() {
+    info.innerHTML = 'Get Ready';
+    setTimeout(function(){
+      gameLoop();
+    },2000);
+  }
 }
