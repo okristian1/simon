@@ -42,10 +42,6 @@ body {
 
 .btn-start:hover {
 	background: black;
-	border-radius: 100%;
-	height: 120px;
-	width: 120px;
-	margin-top: 2rem;
 }
 
 
@@ -85,23 +81,22 @@ body {
 	display: inline-block;
 	position: absolute;
 	margin-top: -5rem;
-	margin-left: -15rem;
+	margin-left: -14rem;
 	z-index: -1;
+	overflow: hidden;
 }
 
 .info-scroll {
-	animation: scroller .4s linear;
+	animation: scroller 1.5s ease;
 }
 
 @keyframes scroller {
-	20% { margin-top: 6rem; }
-	20% { opacity: .2; }
-	40% { margin-top: 12rem; }
-	60% { opacity: 0; }
-	80% { margin-top: 100rem; }
-	80% { opacity: 0.4; }
-	100% { margin-top: -5rem; }
-	100% { opacity: 1; }
+	25% { margin-top: 21rem; }
+	25% { opacity: 0; }
+	50% { margin-top: -15rem }
+	50% { opacity: 0; }
+	75% { margin-top: -5rem; }
+	100% {opacity: 1; }
 }
 
 

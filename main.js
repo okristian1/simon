@@ -6,15 +6,14 @@ var circles = document.querySelectorAll('.circle');
 var info = document.querySelector('.info');
 var board = document.querySelector('.board');
 var colors = ['red', 'yellow', 'green', 'blue'];
-
+var j = 0;
+var turn = 1;
 var sequenceCurrent = []; //filled for testing
 
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
 function gameLoop() {
-  var j = 0;
-  info.innerHTML = 'Get Ready';
-  sequenceAdd();
+  info.innerHTML = 'Turn 1';
   sequenceAdd();
   sequencePlay();
   for (var i = 0; i < circles.length; i++) {
@@ -27,17 +26,17 @@ function gameLoop() {
             info.innerHTML = "Try again";
             setTimeout(function(){
               sequencePlay();
-              noClick(j);
+              noClick(turn);
             }, 1000);
             break;
           } else if (j === sequenceCurrent.length-1) {
-            noClick(j);
             j=0;
-            setTimeout(function() {
             sequenceAdd();
+            turn++
+            noClick(turn);
+            setTimeout(function() {
             sequencePlay();
-            console.log(sequenceCurrent, j);
-          }, 2000);
+          }, 1000);
           break;
           } else {
             j++;
@@ -51,12 +50,14 @@ function gameLoop() {
 
 function noClick(time) {
   board.classList.add('no-click');
-  info.innerHTML = 'Good Job <br> Turn ' + (time+1);
   info.classList.add('info-scroll');
+  setTimeout(function() {
+  info.innerHTML = 'Turn ' + (turn);
+},500);
   setTimeout(function() {
     board.classList.remove('no-click');
     info.classList.remove('info-scroll');
-  },time*1000);
+  }, time*1000);
 }
 
 function sequenceAdd() {
