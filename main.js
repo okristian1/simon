@@ -24,9 +24,10 @@ function gameLoop() {
           if (circle !== sequenceCurrent[j]) {
             j=0;
             info.innerHTML = "Try again";
+            board.classList.add('no-click');
             setTimeout(function(){
-              sequencePlay();
               noClick(turn);
+              sequencePlay();
             }, 1000);
             break;
           } else if (j === sequenceCurrent.length-1) {
@@ -105,7 +106,7 @@ function colorPlay(color) {
 var start = document.querySelector('.btn-start');
   start.onclick = function() {
     start.classList.add('start-hide');
-    info.innerHTML = 'Get Ready';
+    info.innerHTML = 'Starting';
     setTimeout(function(){
       gameLoop();
     },2000);
