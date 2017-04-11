@@ -20,17 +20,6 @@ var j = 0;
 var turn = 1;
 var sequenceCurrent = []; //filled for testing
 
-var counter = setInterval(timer, 1000);
-var count = 10;
-
-function timer() {
-  count -= 1;
-  if (count <= 0) {
-    clearInterval(counter);
-    return;
-  }
-  console.log(count);
-}
 
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
@@ -38,6 +27,17 @@ function gameLoop() {
   info.innerHTML = 'Turn 1';
   sequenceAdd();
   sequencePlay();
+  var counter = setInterval(timer, 1000);
+  var count = 10;
+  function timer() {
+    count -= 1;
+    if (count <= 0) {
+      clearInterval(counter);
+      error();
+      return;
+    }
+    console.log(count);
+  }
   for (var i = 0; i < circles.length; i++) {
       circles[i].onclick = function(e) {
         var circle = this.value;
@@ -54,6 +54,9 @@ function gameLoop() {
             setTimeout(function(){
               sequencePlay();
             }, 3000);
+            clearInterval(counter);
+            counter = setInterval(timer, 1000);
+            count = 5+(turn*3-sequenceCurrent.length);
             break;
           } else if (j === sequenceCurrent.length-1) {
             j=0;
@@ -63,6 +66,9 @@ function gameLoop() {
             setTimeout(function() {
             sequencePlay();
           }, 1000);
+          clearInterval(counter);
+          counter = setInterval(timer, 1000);
+          count = 5+(turn*3-sequenceCurrent.length);
           break;
           } else {
             j++;
@@ -140,7 +146,6 @@ function colorPlay(color) {
     yellowAudio.play();
   }
 }
-
 var start = document.querySelector('.btn-start');
   start.onclick = function() {
     start.classList.add('start-hide');
