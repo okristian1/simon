@@ -20,6 +20,18 @@ var j = 0;
 var turn = 1;
 var sequenceCurrent = []; //filled for testing
 
+var counter = setInterval(timer, 1000);
+var count = 10;
+
+function timer() {
+  count -= 1;
+  if (count <= 0) {
+    clearInterval(counter);
+    return;
+  }
+  console.log(count);
+}
+
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
 function gameLoop() {
