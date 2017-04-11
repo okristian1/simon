@@ -6,9 +6,11 @@ var circles = document.querySelectorAll('.circle');
 var info = document.querySelector('.info');
 var board = document.querySelector('.board');
 var colors = ['red', 'yellow', 'green', 'blue'];
+var no = new Audio('assets/no.mp3');
 var j = 0;
 var turn = 1;
 var sequenceCurrent = []; //filled for testing
+chrome://flags/#disable-gesture-requirement-for-media-playback
 
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
@@ -25,10 +27,13 @@ function gameLoop() {
             j=0;
             info.innerHTML = "Try again";
             board.classList.add('no-click');
-            setTimeout(function(){
+            error();
+            setTimeout(function() {
               noClick(turn);
+            },1000);
+            setTimeout(function(){
               sequencePlay();
-            }, 1000);
+            }, 3000);
             break;
           } else if (j === sequenceCurrent.length-1) {
             j=0;
@@ -47,6 +52,19 @@ function gameLoop() {
       }
     }
   }
+
+function error() {
+  var toBlink = document.querySelectorAll('.circle');
+  for (var i = 0; i < toBlink.length; i++) {
+    toBlink[i].classList.add('circle-error');
+  }
+  no.play();
+  setTimeout(function() {
+    for (var i = 0; i < toBlink.length; i++) {
+    toBlink[i].classList.remove('circle-error');
+    }
+  }, 2000);
+}
 
 
 function noClick(time) {
