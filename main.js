@@ -67,7 +67,7 @@ function error() {
 }
 
 
-function noClick(time) {
+function noClick(turn) {
   board.classList.add('no-click');
   info.classList.add('info-scroll');
   setTimeout(function() {
@@ -76,7 +76,7 @@ function noClick(time) {
   setTimeout(function() {
     board.classList.remove('no-click');
     info.classList.remove('info-scroll');
-  }, time*1000);
+  }, 1000+(turn*1000));
 }
 
 function sequenceAdd() {
@@ -125,6 +125,7 @@ var start = document.querySelector('.btn-start');
   start.onclick = function() {
     start.classList.add('start-hide');
     info.innerHTML = 'Starting';
+    redAudio.play();
     setTimeout(function(){
       gameLoop();
     },2000);
