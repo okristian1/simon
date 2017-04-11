@@ -1,16 +1,24 @@
+//color buttons
 var red = document.getElementById("red");
 var yellow = document.getElementById("yellow");
 var blue = document.getElementById("blue");
 var green = document.getElementById("green");
+// all color circles
 var circles = document.querySelectorAll('.circle');
+//audio
+var redAudio = new Audio('assets/simonSound1.mp3');
+var greenAudio = new Audio('assets/simonSound2.mp3');
+var blueAudio = new Audio('assets/simonSound3.mp3');
+var yellowAudio = new Audio('assets/simonSound4.mp3');
+var no = new Audio('assets/no.mp3');
+//other selectors
 var info = document.querySelector('.info');
 var board = document.querySelector('.board');
+
 var colors = ['red', 'yellow', 'green', 'blue'];
-var no = new Audio('assets/no.mp3');
 var j = 0;
 var turn = 1;
 var sequenceCurrent = []; //filled for testing
-chrome://flags/#disable-gesture-requirement-for-media-playback
 
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
@@ -125,8 +133,19 @@ var start = document.querySelector('.btn-start');
   start.onclick = function() {
     start.classList.add('start-hide');
     info.innerHTML = 'Starting';
+    redAudio.volume = 0.0;
+    blueAudio.volume = 0.0;
+    greenAudio.volume = 0.0;
+    yellowAudio.volume = 0.0;
     redAudio.play();
+    blueAudio.play();
+    greenAudio.play();
+    yellowAudio.play();
     setTimeout(function(){
+      redAudio.volume = 1.0;
+      blueAudio.volume = 1.0;
+      greenAudio.volume = 1.0;
+      yellowAudio.volume = 1.0;
       gameLoop();
     },2000);
   }
