@@ -114,6 +114,8 @@ body {
 
 .settings {
 	margin-right: 450px;
+	outline: none;
+	border: none;
 }
 
 #red {

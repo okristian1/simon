@@ -14,7 +14,8 @@ var no = new Audio('assets/no.mp3');
 //other selectors
 var info = document.querySelector('.info');
 var board = document.querySelector('.board');
-
+var settings = document.querySelector('.settings');
+var strict = false;
 var colors = ['red', 'yellow', 'green', 'blue'];
 var j = 0;
 var turn = 1;
@@ -28,13 +29,18 @@ function gameLoop() {
   sequenceAdd();
   sequencePlay();
   var counter = setInterval(timer, 1000);
-  var count = 10;
+  var count = 6;
   function timer() {
     count -= 1;
     if (count <= 0) {
       clearInterval(counter);
       error();
-      return;
+      setTimeout(function() {
+        sequencePlay();
+        count = 5+(turn*3-sequenceCurrent.length);
+        counter = setInterval(timer, 1000);
+        return;
+      }, 2000);
     }
     console.log(count);
   }
@@ -45,9 +51,14 @@ function gameLoop() {
         for (var i = 0; i < sequenceCurrent.length ; i++) {
           if (circle !== sequenceCurrent[j]) {
             j=0;
-            info.innerHTML = "Try again";
+            info.innerHTML = "Try <br>again";
             board.classList.add('no-click');
             error();
+            if (strict) {
+              turn = 1;
+              sequenceCurrent = [];
+              sequenceAdd();
+            }
             setTimeout(function() {
               noClick(turn);
             },1000);
@@ -92,6 +103,11 @@ function error() {
   }, 2000);
 }
 
+settings.onclick = function() {
+  strict = strict === false ? true : false;
+  settings.innerHTML = settings.innerHTML === "Strict Mode OFF" ? "Strict Mode ON" : "Strict Mode OFF";
+  console.log(strict);
+}
 
 function noClick(turn) {
   board.classList.add('no-click');
