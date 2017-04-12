@@ -22,7 +22,7 @@ body {
 	pointer-events: none;
 }
 
-.info{
+.info {
 	padding-top: 14%;
 	padding-left: 9%;
 	display: inline-block;
@@ -32,6 +32,7 @@ body {
 	z-index: -1;
 	overflow: hidden;
 }
+
 
 .btn-start {
 	position: absolute;
@@ -109,6 +110,25 @@ body {
 	50% { opacity: 0; }
 	75% { margin-top: -5rem; }
 	100% {opacity: 1; }
+}
+
+.reset {
+	background: red;
+	color: white;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	position: absolute;
+	margin-left: -1rem;
+	margin-top: 15rem;
+	outline: none;
+}
+
+.reset-text {
+	position: absolute;
+	margin-top: -3rem;
+	margin-left: 34rem;
+	color: black
 }
 
 

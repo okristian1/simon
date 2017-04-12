@@ -15,12 +15,13 @@ var no = new Audio('assets/no.mp3');
 var info = document.querySelector('.info');
 var board = document.querySelector('.board');
 var settings = document.querySelector('.settings');
+var reset = document.querySelector('.reset');
 var strict = false;
 var colors = ['red', 'yellow', 'green', 'blue'];
 var j = 0;
 var turn = 1;
-var sequenceCurrent = []; //filled for testing
-
+var win = 21;
+var sequenceCurrent = [];
 
 //make circle clicked compare to sequence not circle incremented.
 window.onload = function() {
@@ -28,22 +29,8 @@ function gameLoop() {
   info.innerHTML = 'Turn 1';
   sequenceAdd();
   sequencePlay();
-  var counter = setInterval(timer, 1000);
-  var count = 6;
-  function timer() {
-    count -= 1;
-    if (count <= 0) {
-      clearInterval(counter);
-      error();
-      setTimeout(function() {
-        sequencePlay();
-        count = 5+(turn*3-sequenceCurrent.length);
-        counter = setInterval(timer, 1000);
-        return;
-      }, 2000);
-    }
-    console.log(count);
-  }
+  clearInterval(counter);
+  counter = setInterval(timer, 1000);
   for (var i = 0; i < circles.length; i++) {
       circles[i].onclick = function(e) {
         var circle = this.value;
@@ -51,7 +38,7 @@ function gameLoop() {
         for (var i = 0; i < sequenceCurrent.length ; i++) {
           if (circle !== sequenceCurrent[j]) {
             j=0;
-            info.innerHTML = "Try <br>again";
+            info.innerHTML = "Wrong";
             board.classList.add('no-click');
             error();
             if (strict) {
@@ -73,6 +60,10 @@ function gameLoop() {
             j=0;
             sequenceAdd();
             turn++
+            if (turn===win) {
+              info.innerHTML = " You Win";
+              break;
+            }
             noClick(turn);
             setTimeout(function() {
             sequencePlay();
@@ -90,6 +81,29 @@ function gameLoop() {
     }
   }
 
+  function timer() {
+    count -= 1;
+    console.log(count);
+    if (count <= 0) {
+      clearInterval(counter);
+      error();
+      info.innerHTML = 'Too <br> Slow'
+      setTimeout(function() {
+        info.innerHTML = 'Turn ' + (turn);
+        sequencePlay();
+        count = 5+(turn*3-sequenceCurrent.length);
+        counter = setInterval(timer, 1000);
+        return;
+      }, 2000);
+    }
+  }
+
+  var count = 6;
+  var counter = setInterval(timer, 1000);
+  clearInterval(counter);
+
+
+
 function error() {
   var toBlink = document.querySelectorAll('.circle');
   for (var i = 0; i < toBlink.length; i++) {
@@ -106,7 +120,14 @@ function error() {
 settings.onclick = function() {
   strict = strict === false ? true : false;
   settings.innerHTML = settings.innerHTML === "Strict Mode OFF" ? "Strict Mode ON" : "Strict Mode OFF";
-  console.log(strict);
+}
+
+reset.onclick = function() {
+  sequenceCurrent = [];
+  turn = 1;
+  count = 5+(turn*3-sequenceCurrent.length);
+  clearInterval(counter);
+  gameLoop();
 }
 
 function noClick(turn) {
